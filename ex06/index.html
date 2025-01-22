@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numero máximo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Encontrando o maior número</h1>
+        <input type="number" id="num1" placeholder="Número 1">
+        <input type="number" id="num2" placeholder="Número 2">
+        <input type="number" id="num3" placeholder="Número 3">
+        <input type="number" id="num4" placeholder="Número 4">
+        <input type="number" id="num5" placeholder="Número 5">
+        <input type="number" id="num6" placeholder="Número 6">
+        <button onclick="encontrarMaior()">Encontre o Maior</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function encontrarMaior() {
+            const numeros = [
+                parseInt(document.getElementById('num1').value),
+                parseInt(document.getElementById('num2').value),
+                parseInt(document.getElementById('num3').value),
+                parseInt(document.getElementById('num4').value),
+                parseInt(document.getElementById('num5').value),
+                parseInt(document.getElementById('num6').value)
+            ];
+
+            const isValid = numeros.every(num => !isNaN(num));
+
+            if (!isValid) {
+                document.getElementById('resultado').innerHTML = '<span style="color: red;">insira 6 números.</span>';
+                return;
+            }
+
+            const maiorNumero = Math.max(...numeros);
+            document.getElementById('resultado').innerHTML = `<span style="color: green;">O maior número é: ${maiorNumero}</span>`;
+        }
+    </script>
+</body>
+</html>

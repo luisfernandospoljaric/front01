@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ordenar numeros</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+            .container h1 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            .container input {
+                width: 80%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .container button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 1em;
+                cursor: pointer;
+            }
+            .container button:hover {
+                background-color: #0056b3;
+            }
+            .result {
+                margin-top: 20px;
+                font-size: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Compare Two Numbers</h1>
+            <input type="number" id="num1" placeholder="Enter first number">
+            <input type="number" id="num2" placeholder="Enter second number">
+            <button onclick="compareNumeros()">Compare</button>
+            <div class="result" id="comparaResultado"></div>
+        </div>
+    
+        <script>
+            function compareNumeros() {
+                const num1 = parseInt(document.getElementById('num1').value);
+                const num2 = parseInt(document.getElementById('num2').value);
+    
+                if (isNaN(num1) || isNaN(num2)) {
+                    document.getElementById('comparaResultado').innerHTML = '<span style="color: red;">Please enter both numbers.</span>';
+                    return;
+                }
+    
+                if (num1 > num2) {
+                    document.getElementById('comparaResultado').innerHTML = `<span style="color: green;">Maior número é: ${num1}, e o menor é: ${num2}.</span>`;
+                } else if (num1 < num2) {
+                    document.getElementById('comparaResultado').innerHTML = `<span style="color: green;">Maior número é: ${num2}, e o menor é: ${num1}.</span>`;
+                } else {
+                    document.getElementById('comparaResultado').innerHTML = '<span style="color: blue;">Os dois números são iguais.</span>';
+                }
+            }
+        </script>
+    </body>
+</html>

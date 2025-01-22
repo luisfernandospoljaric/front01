@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 80%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Média Aluno</h1>
+        <input type="number" id="n1" placeholder="Primeira Nota">
+        <input type="number" id="n2" placeholder="Segunda Nota">
+        <input type="number" id="n3" placeholder="Terceira Nota">
+        <button onclick="calcularMedia()">Calcular</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            const n1 = parseFloat(document.getElementById('n1').value);
+            const n2 = parseFloat(document.getElementById('n2').value);
+            const n3 = parseFloat(document.getElementById('n3').value);
+
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+                document.getElementById('resultado').innerHTML = '<span style="color: red;">Favor, colocar as três notas.</span>';
+                return;
+            }
+
+            const media = (n1 + n2 + n3) / 3;
+            let status = '';
+
+            if (media >= 6) {
+                status = '<span style="color: green;">Aprovado!</span>';
+            } else if (media >= 4) {
+                status = '<span style="color: orange;">Recuperação</span>';
+            } else {
+                status = '<span style="color: red;">Reprovado</span>';
+            }
+
+            document.getElementById('resultado').innerHTML = 
+                `Média: ${media.toFixed(2)} - Situação: ${status}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora de descontos</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+            .container h1 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            .container input, .container select {
+                width: 80%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .container button {
+                width: 100%;
+                padding: 10px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 1em;
+                cursor: pointer;
+            }
+            .container button:hover {
+                background-color: #0056b3;
+            }
+            .result {
+                margin-top: 20px;
+                font-size: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Calculadora de Descontos</h1>
+            <select id="tipoItem">
+                <option value="camisa">Camisa</option>
+                <option value="bermuda">Bermuda</option>
+                <option value="calca">Calça</option>
+            </select>
+            <input type="number" id="precoItem" placeholder="Enter item price">
+            <button onclick="calcularDesconto()">Calculate</button>
+            <div class="result" id="resultadoDesconto"></div>
+        </div>
+
+        <script>
+            function calcularDesconto() {
+                const tipoItem = document.getElementById('tipoItem').value;
+                const precoItem = parseFloat(document.getElementById('precoItem').value);
+
+                if (isNaN(precoItem) || precoItem <= 0) {
+                    document.getElementById('resultadoDesconto').innerHTML = '<span style="color: red;">Please enter a valid price.</span>';
+                    return;
+                }
+
+                let margemDesconto = 0;
+
+                switch (tipoItem) {
+                    case 'camisa':
+                        margemDesconto = 0.20;
+                        break;
+                    case 'bermuda':
+                        margemDesconto = 0.10;
+                        break;
+                    case 'calca':
+                        margemDesconto = 0.15;
+                        break;
+                }
+
+                const desconto = precoItem * margemDesconto;
+                const precoFinal = precoItem - desconto;
+
+                document.getElementById('resultadoDesconto').innerHTML = 
+                    `Preço Original: ${precoItem.toFixed(2)}<br>
+                    desconto: ${desconto.toFixed(2)}<br>
+                    Preço Final: ${precoFinal.toFixed(2)}`;
+            }
+        </script>
+    </body>
+</html>
